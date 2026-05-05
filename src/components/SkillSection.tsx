@@ -25,15 +25,15 @@ export default function SkillSection() {
         </div>
 
         <Tabs defaultValue="programming" className="w-full">
-          <TabsList className="grid grid-cols-2 md:grid-cols-4 w-full h-auto p-1 bg-background border mb-12">
+          <TabsList className="grid grid-cols-2 md:grid-cols-4 w-full h-auto p-1.5 bg-zinc-950 border border-white/10 mb-12 rounded-xl overflow-hidden">
             {categories.map((cat) => (
               <TabsTrigger
                 key={cat.id}
                 value={cat.id}
-                className="py-4 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all"
+                className="py-4 px-2 data-active:bg-white data-active:text-black text-white/60 transition-all flex items-center justify-center gap-2 rounded-lg"
               >
-                <cat.icon className="w-4 h-4 mr-2 hidden sm:inline" />
-                {cat.label}
+                <cat.icon className="w-4 h-4 shrink-0 hidden sm:inline-block" />
+                <span className="text-sm font-medium">{cat.label}</span>
               </TabsTrigger>
             ))}
           </TabsList>

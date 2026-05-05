@@ -79,12 +79,12 @@ export default function ProjectGrid() {
                     />
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
                       {project.github && (
-                        <Button size="icon" variant="secondary" className="rounded-full" render={<a href={project.github} target="_blank" rel="noreferrer" />}>
+                        <Button size="icon" variant="secondary" className="rounded-full" nativeButton={false} render={<a href={project.github} target="_blank" rel="noreferrer" />}>
                           <Github className="w-5 h-5" />
                         </Button>
                       )}
                       {project.link && (
-                        <Button size="icon" variant="secondary" className="rounded-full" render={<a href={project.link} target="_blank" rel="noreferrer" />}>
+                        <Button size="icon" variant="secondary" className="rounded-full" nativeButton={false} render={<a href={project.link} target="_blank" rel="noreferrer" />}>
                           <ExternalLink className="w-5 h-5" />
                         </Button>
                       )}
@@ -178,13 +178,13 @@ export default function ProjectGrid() {
 
                   <div className="flex gap-4 pt-4 border-t">
                     {selectedProject.github && (
-                      <Button className="flex-1 rounded-full" render={<a href={selectedProject.github} target="_blank" rel="noreferrer" />}>
+                      <Button className="flex-1 rounded-full" nativeButton={false} render={<a href={selectedProject.github} target="_blank" rel="noreferrer" />}>
                         <Github className="w-4 h-4 mr-2" />
                         View Code
                       </Button>
                     )}
                     {selectedProject.link && (
-                      <Button variant="outline" className="flex-1 rounded-full border-primary/20 hover:border-primary" render={<a href={selectedProject.link} target="_blank" rel="noreferrer" />}>
+                      <Button variant="outline" className="flex-1 rounded-full border-primary/20 hover:border-primary" nativeButton={false} render={<a href={selectedProject.link} target="_blank" rel="noreferrer" />}>
                         <ExternalLink className="w-4 h-4 mr-2" />
                         Live Demo
                       </Button>

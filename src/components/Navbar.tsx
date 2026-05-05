@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link, useLocation } from 'react-router-dom';
 
 const navLinks = [
   { name: 'About', href: '#about' },
@@ -13,6 +14,8 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,25 +28,28 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-background/80 backdrop-blur-md border-bottom py-2' : 'bg-transparent py-4'
+        scrolled ? 'bg-background/80 backdrop-blur-md border-b py-2' : 'bg-transparent py-4'
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <motion.a
-          href="#"
+        <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="text-xl font-bold tracking-tighter"
         >
-          BLESSED<span className="text-primary">.</span>
-        </motion.a>
+          <Link
+            to="/"
+            className="text-xl font-bold tracking-tighter"
+          >
+            BLESSED CHIKEZIE<span className="text-primary">.</span>
+          </Link>
+        </motion.div>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link, i) => (
             <motion.a
               key={link.name}
-              href={link.href}
+              href={isHome ? link.href : `/${link.href}`}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
@@ -81,7 +87,7 @@ export default function Navbar() {
               {navLinks.map((link) => (
                 <a
                   key={link.name}
-                  href={link.href}
+                  href={isHome ? link.href : `/${link.href}`}
                   onClick={() => setIsOpen(false)}
                   className="text-2xl font-semibold hover:text-primary transition-colors"
                 >
@@ -89,9 +95,9 @@ export default function Navbar() {
                 </a>
               ))}
               <div className="flex items-center gap-6 pt-4 border-t">
-                <Github className="w-6 h-6" />
-                <Linkedin className="w-6 h-6" />
-                <Mail className="w-6 h-6" />
+                <a href="https://github.com" target="_blank" rel="noreferrer"><Github className="w-6 h-6" /></a>
+                <a href="https://linkedin.com" target="_blank" rel="noreferrer"><Linkedin className="w-6 h-6" /></a>
+                <a href="mailto:blessedt.bj@gmail.com"><Mail className="w-6 h-6" /></a>
               </div>
             </div>
           </motion.div>

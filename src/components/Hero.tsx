@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Download } from 'lucide-react';
 
+
 export default function Hero() {
   return (
     <section id="about" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
@@ -40,16 +41,16 @@ export default function Hero() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 20 }}  
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             className="flex flex-wrap gap-4"
           >
-            <Button size="lg" className="rounded-full px-8 group" render={<a href="#projects" />}>
+            <Button size="lg" className="rounded-full px-8 group" nativeButton={false} render={<a href="#projects" />}>
               View My Work
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button size="lg" variant="outline" className="rounded-full px-8" render={<a href="/resume.pdf" target="_blank" />}>
+            <Button size="lg" variant="outline" className="rounded-full px-8" nativeButton={false} render={<a href="/resume.pdf" target="_blank" />}>
               <Download className="mr-2 w-4 h-4" />
               Download CV
             </Button>
